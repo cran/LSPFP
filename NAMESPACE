@@ -1,0 +1,12 @@
+import(seqinr, RCurl, data.table, bit64 )
+importFrom(R.utils, gunzip)
+importFrom(grDevices, pdf)
+importFrom(graphics, par)
+export(wrapperLSPFP, printSelectedPeptides)
+importFrom("grDevices", "dev.off", "rgb")
+importFrom("graphics", "axis", "legend", "lines", "plot", "rect")
+importFrom("stats", "na.exclude")
+importFrom("utils", "data", "head", "read.csv", "read.delim",
+             "read.table", "setTxtProgressBar", "txtProgressBar",
+             "write.csv")
+
