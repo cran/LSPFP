@@ -15,11 +15,11 @@ getTopofeatures <- function(gff,protl, acc)
   result <- FALSE
       
   signal <- mygff[mygff$feature == "Signal peptide", c("feature", "start", "end")]  
-  if(nrow(signal) >0)
+  if(nrow(signal) > 0)
   {
     for (i in seq_along(signal$start))
     {
-      topo[signal$start[1]:signal$end[i]] <- "SP"
+      topo[signal$start[i]:signal$end[i]] <- "SP"
     }
     signal$feature <- "SP"
     topodf <- rbind(topodf,signal) 
@@ -28,11 +28,11 @@ getTopofeatures <- function(gff,protl, acc)
   
   
   transm <- mygff[mygff$feature == "Transmembrane", c("feature","start", "end")]  
-  if(nrow(transm) >0)
+  if(nrow(transm) > 0)
   {
     for (i in seq_along(transm$start))
     {
-      topo[transm$start[1]:transm$end[i]] <- "TM"
+      topo[transm$start[i]:transm$end[i]] <- "TM"
     }
     transm$feature <- "TM"
     topodf <- rbind(topodf,transm)
@@ -45,7 +45,7 @@ getTopofeatures <- function(gff,protl, acc)
   {
     for (i in seq_along(extra$start))
     {
-      topo[extra$start[1]:extra$end[i]] <- "EC"
+      topo[extra$start[i]:extra$end[i]] <- "EC"
     }
     extra$feature <- "EC"
     topodf <- rbind(topodf,extra)
@@ -58,7 +58,7 @@ getTopofeatures <- function(gff,protl, acc)
   {
     for (i in seq_along(cyto$start))
     {
-      topo[cyto$start[1]:cyto$end[i]] <- "CP"
+      topo[cyto$start[i]:cyto$end[i]] <- "CP"
     }
     cyto$feature <- "CP"
     topodf <- rbind(topodf,cyto)

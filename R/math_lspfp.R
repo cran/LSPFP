@@ -7,7 +7,7 @@
 # create intensity-matrix for one Accession/Protein
 # Input: data.frame df (Accession, Start, End,Counts, Intensities), numeric vector protlength, data.frame location
 # Output: list (logical vector,  numeric matrix count , numeric matrix intensity )
-create_countintensematrix<-function(df,protlength, location)
+create_countintensematrix<-function(df, protlength, location)
 {
   rows <- length(location[,"Expname"])
   #   columnIntens <- grep("Intensity_",names(df))

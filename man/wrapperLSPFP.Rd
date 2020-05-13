@@ -6,13 +6,14 @@
 wrapperLSPFP
 }
 \description{
+THIS IS AN ALPHA BUILD OF 1.0.1
 This function plots the positions of peptides with associated proteins from shotgun proteomics data from MaxQuant or Progenesis as input. The plots contain informations about: intensity, position, protein structure, location of protein domains, genename, protein accession, secretion score and truncation score. The plots are written to a PDF file
 and a data.frame containing protein feature information is saved as a rds-file and csv-file.
 }
 \usage{
-wrapperLSPFP(globpath, expname, sourcefiles, org, grlocationdf, 
+wrapperLSPFP(globpath, expname, sourcefiles, org, grlocationdf,
             version = "actual", species = c("HUMAN", "MOUSE", "RAT", "PIG"),
-            proteomeid = c("UP000005640", "UP000000589", "UP000002494", "UP000008227"), 
+            proteomeid = c("UP000005640", "UP000000589", "UP000002494", "UP000008227"),
             taxid = c("9606", "10090", "10116", "9823"), domain = rep("Eukaryota", 4),
             forcedl = FALSE, pepstack = 2, pepque = 2, sortprint = "fcsmall",
             unipep = TRUE, localfasta = "none")
@@ -35,11 +36,11 @@ Character string specifying the organism the peptides are from.
 %%     ~~Describe \code{org} here~~
 }
   \item{grlocationdf}{
-  Data.frame including the following columns: Expname, Location, Treatment, Sample, Group. 
+  Data.frame including the following columns: Expname, Location, Treatment, Sample, Group.
 %%     ~~Describe \code{grlocationdf} here~~
 }
   \item{version}{
-  Character string indicating what version of the \file{BasicData} file should be used. 
+  Character string indicating what version of the \file{BasicData} file should be used.
 %%     ~~Describe \code{version} here~~
 }
   \item{species}{
@@ -66,11 +67,11 @@ Logical, TRUE: indicates that the actual \code{version} of \file{BasicData} shou
 %%     ~~Describe \code{pepstack} here~~
 }
   \item{pepque}{
-  Numerical indicating the minimal number of peptides that should have been measured in each groupe. 
+  Numerical indicating the minimal number of peptides that should have been measured in each groupe.
 %%     ~~Describe \code{pepque} here~~
 }
   \item{sortprint}{
-  Character string that indicates how the peptide plot will be sorted. "fcsmall": decreasing \code{fcsmall} values  , "lflf": decreasing \code{fclf} values, "trunc": decreasing \code{tscore} values, "acc": increasing \code{accessions}. 
+  Character string that indicates how the peptide plot will be sorted. "fcsmall": decreasing \code{fcsmall} values  , "lflf": decreasing \code{fclf} values, "trunc": decreasing \code{tscore} values, "acc": increasing \code{accessions}, "ntts": decreasing values of \code{NTT}*\code{NTTcov}, "ctts": decreasing values of \code{CTT}*\code{CTTcov}.
 %%     ~~Describe \code{transf} here~~
 }
   \item{unipep}{
@@ -121,10 +122,12 @@ For annotation and protein sequence information the organisem specific gff-files
 The PDF output file will contain a plot for every unique protein a peptide was identified by MaxQuant or Progenesis. \cr
 
 A data.frame containing values that are used for the score calculation will be at: \cr\cr \file{globpath/AnalysisData/expname/feature_table.rds} and \cr\file{globpath/AnalysisData/expname/feature_table.csv} \cr
-It contains the following columns: Accession, NTT, NTTcov, CTT, CTTcov, TotalPep, ProtL, MeanSec, MeanProt, MeanSecLF, MeanProtLF, tscore, fcsmall, fclf \cr
+It contains the following columns: Accession, NTT, NTTcov, CTT, CTTcov, TotalPep, ProtL, MeanSec, MeanProt, MeanSecLF, MeanProtLF, ntts, ctts, tscore, fcsmall, fclf \cr
 A .csv-file of \code{grlocationdf} will be saved in \file{AnalysisData}, too.\cr
-Further more \file{intenscount_table.csv} and \file{namesdf_table.csv} are stored in the \file{AnalysisData} directory. They  
-contain information that enables printing with \code{print_selected_peptides}.
+Further more \file{intenscount_table.csv} and \file{namesdf_table.csv} are stored in the \file{AnalysisData} directory. They
+contain information that enables printing with \code{print_selected_peptides}.\cr
+Further more there should be two tables (\file{metaIntens.csv}, \file{metaIntens.csv}) that contain different length and intensity values based on annotated extracellular and cytoplasmic regions.\cr
+
 }
 \value{
 The return value is TRUE if no error occured and FALSE otherwise.
@@ -156,7 +159,7 @@ A detailed vignette will follow soon.
 %%}
 
 \examples{
-#The download of gff-files and FASTA-sequences from UniProt 
+#The download of gff-files and FASTA-sequences from UniProt
 # might be time consuming.
 # Please consider this before running the example.
 
@@ -166,8 +169,8 @@ globpath <- getwd()
 
 expname <- "Test_Mouse"
 
-sourcefiles <- system.file("extdata", "Mouse.txt", 
-                        package="LSPFPpackagetest")
+sourcefiles <- system.file("extdata", "Mouse.txt",
+                        package="LSPFP")
 
 org <- "Mouse"
 
@@ -185,13 +188,13 @@ explocation <- c(rep("Proteome",10),rep("Secretome",10))
 # Are the cells from the same culture eg. patient?
 expsample <- c(rep(1:5,4))
 
-# Are the samples differently treated? 
+# Are the samples differently treated?
 #(different environments, chemicals, tissue extraction technique)?
 exptreatment <- c(rep("AA",5),rep("BB",5),rep("AB",5),rep("BC",5))
 
 #Group specifies which experiments belong together
 group <- c(rep(1,10),rep(2,10))
-grlocationdf <- data.frame(Expname = expnames, Location = explocation, 
+grlocationdf <- data.frame(Expname = expnames, Location = explocation,
                           Treatment = exptreatment, Sample = expsample,
                           Group = group, stringsAsFactors = FALSE)
 
@@ -211,5 +214,5 @@ res <- wrapperLSPFP(globpath, expname, sourcefiles, org, grlocationdf,
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{utilities}
+

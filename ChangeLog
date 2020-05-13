@@ -1,0 +1,27 @@
+ChangeLog LSPFP
+
+changes in vesion 1.0.3
+
+FIX   interface to Uniprot KB changed from http to https
+
+
+changes in version 1.0.2
+
+this is still an alpha version, just for testing meta Values, not for the public
+
+NEW       added output concerning metavalues from Uniprot annotation (gff)
+
+
+changes in version 1.0.1
+
+NEW       added ntts and ctts for sorting and in the outputfiles
+NEW       added tscore2 just for testing, will be the new tscore later, added a coverage value to tscore
+NEW       added protein names/description and gene names to feature_table.csv
+
+CHANGE    reduced cutoff during truncation scoring to 50%
+CHANGE    reduced the shown decimal places to 4 for all scores
+CHANGE    no rounding on log2 intensity values that are used for scoreing, it is now only used to create intervals for printing
+
+FIX       stop calculation of NTTcov or CTTcov if NTT or CTT are zero
+FIX       wrong package name in wrapperLSPFP example
+FIX       two columns in namesdf (Genname Abbreviation) table were mixed up, now the correct genname should be on the prints

@@ -1,15 +1,16 @@
 Package: LSPFP
 Type: Package
 Title: Lysate and Secretome Peptide Feature Plotter
-Version: 1.0.0
-Date: 2016-05-13
+Version: 1.0.3
+Date: 2020-05-11
 Author: Rafael Dellen, with contributions of Fabian Kruse
-Maintainer: Rafael Dellen <Rafael.Dellen@uni-duesseldorf.de>
+Maintainer: Gereon Poschmann <gereon.poschmann@hhu.de>
 Description: Creates plots of peptides from shotgun proteomics analysis of secretome and lysate samples. These plots contain associated protein features and scores for potential secretion and truncation.
 License: GPL-3
 Depends: seqinr, RCurl, data.table, bit64
-Imports: tcltk2, R.utils, graphics, grDevices, stats, utils
+Imports: R.utils, graphics, grDevices, stats, utils
 NeedsCompilation: no
-Packaged: 2016-05-19 10:46:48 UTC; dellen
+Packaged: 2020-05-11 15:01:39 UTC; Poschmann
 Repository: CRAN
-Date/Publication: 2016-05-19 16:35:29
+Date/Publication: 2020-05-13 23:40:23 UTC
+RoxygenNote: 6.1.1
